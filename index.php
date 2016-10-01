@@ -18,7 +18,7 @@ $issues = json_decode(file_get_contents('issues.json'));
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-<table id="example" class="display" width="100%" cellspacing="0">
+<table id="issues" class="display" width="100%" cellspacing="0">
     <thead>
     <tr>
         <th>Repo</th>
@@ -58,7 +58,7 @@ $issues = json_decode(file_get_contents('issues.json'));
 
 <script>
     $(document).ready(function () {
-        $('#example').DataTable();
+        $('#issues').DataTable();
     });
 </script>
 
