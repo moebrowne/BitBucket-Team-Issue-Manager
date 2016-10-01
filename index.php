@@ -77,15 +77,16 @@ $issues = json_decode(file_get_contents($issueFileName));
                     break;
             }
 
+            // Alias the New state to Open
+            $state = ($issue->state === 'new') ? 'open':$issue->state;
+
             ?>
             <tr class="<?= $rowClass; ?>">
                 <td><?= $issue->repository->name; ?></td>
                 <td><?= $issue->title; ?></td>
                 <td><?= $issue->kind; ?></td>
                 <td><?= $issue->priority; ?></td>
-                <td <?= ($issue->state === 'new') ? 'data-order="open"':'' ?>>
-                    <?= $issue->state; ?>
-                </td>
+                <td><?= $state; ?></td>
                 <td data-order="<?= $createdOn->timestamp; ?>">
                     <?= $createdOn->diffForHumans(); ?>
                 </td>
