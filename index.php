@@ -124,8 +124,6 @@ $issues = json_decode(file_get_contents($issueFileName));
                 "columnDefs": [
                     { "targets": 0, "fnCreatedCell": datatablesCellRender },
                     { "targets": 1, "fnCreatedCell": datatablesCellRender },
-                    { "targets": 2, "searchable": false },
-                    { "targets": 3, "searchable": false },
                     { "targets": 5, "searchable": false },
                     { "targets": 6, "searchable": false }
                 ],
