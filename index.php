@@ -25,11 +25,6 @@ $issues = json_decode(file_get_contents($issueFileName));
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <style type="text/css">
-        table.dataTable thead th[data-noFilter] select {
-            display: none;
-        }
-    </style>
 </head>
 <body>
 
@@ -104,7 +99,7 @@ $issues = json_decode(file_get_contents($issueFileName));
                 "order": [[ 3, "asc" ]],
                 "pageLength": 25,
                 initComplete: function () {
-                    this.api().columns().every(function () {
+                    this.api().columns(':not([data-noFilter])').every(function () {
                         var column = this;
 
                         var select = $('<select><option value=""></option></select>')
