@@ -121,6 +121,13 @@ $issues = json_decode(file_get_contents($issueFileName));
                             select.append('<option value="' + d + '">' + d + '</option>')
                         });
                     });
+
+                    // Set the default filtering
+                    this.api().columns([4]).every(function () {
+                        var column = this;
+
+                        $(column.header()).children('select').val('open').trigger('change');
+                    });
                 }
             });
         });
