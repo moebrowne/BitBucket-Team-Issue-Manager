@@ -1,5 +1,9 @@
 <?php
 
+use Carbon\Carbon;
+
+$loader = require 'vendor/autoload.php';
+
 $issues = json_decode(file_get_contents('issues.json'));
 
 ?>
@@ -28,14 +32,25 @@ $issues = json_decode(file_get_contents('issues.json'));
     </thead>
     <tbody>
     <?php foreach ($issues as $issue) : ?>
+        <?php
+
+        // Dates
+        $createdOn = Carbon::parse($issue->created_on);
+        $updatedOn = Carbon::parse($issue->updated_on);
+
+        ?>
         <tr>
             <td><?= $issue->repository->name; ?></td>
             <td><?= $issue->title; ?></td>
             <td><?= $issue->kind; ?></td>
             <td><?= $issue->priority; ?></td>
             <td><?= $issue->state; ?></td>
-            <td><?= $issue->created_on; ?></td>
-            <td><?= $issue->updated_on; ?></td>
+            <td data-order="<?= $createdOn->timestamp; ?>">
+                <?= $createdOn->diffForHumans(); ?>
+            </td>
+            <td data-order="<?= $updatedOn->timestamp; ?>">
+                <?= $updatedOn->diffForHumans(); ?>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
