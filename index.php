@@ -20,10 +20,11 @@ $issues = json_decode(file_get_contents($issueFileName));
     <meta charset="UTF-8">
     <title><?= ucwords($teamName); ?> Issue Manager</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/datatables/media/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@ $issues = json_decode(file_get_contents($issueFileName));
         <h1><?= ucwords($teamName); ?></h1>
     </div>
 
-    <table id="issues" class="display" width="100%" cellspacing="0">
+    <table id="issues" class="table table-striped table-hover" width="100%" cellspacing="0">
         <thead>
         <tr>
             <th>Repo</th>
