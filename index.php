@@ -77,9 +77,7 @@ $issues = json_decode(file_get_contents($issueFileName));
                 <td><?= $issue->repository->name; ?></td>
                 <td><?= $issue->title; ?></td>
                 <td><?= $issue->kind; ?></td>
-                <td>
-                    <?= $issue->priority; ?>
-                </td>
+                <td><?= $issue->priority; ?></td>
                 <td <?= ($issue->state === 'new') ? 'data-order="open"':'' ?>>
                     <?= $issue->state; ?>
                 </td>
