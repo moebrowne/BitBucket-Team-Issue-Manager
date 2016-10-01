@@ -80,7 +80,9 @@ $issues = json_decode(file_get_contents($issueFileName));
                 <td>
                     <?= $issue->priority; ?>
                 </td>
-                <td><?= $issue->state; ?></td>
+                <td <?= ($issue->state === 'new') ? 'data-order="open"':'' ?>>
+                    <?= $issue->state; ?>
+                </td>
                 <td data-order="<?= $createdOn->timestamp; ?>">
                     <?= $createdOn->diffForHumans(); ?>
                 </td>
