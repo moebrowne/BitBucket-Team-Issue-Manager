@@ -98,6 +98,12 @@ $issues = json_decode(file_get_contents($issueFileName));
             $('#issues').DataTable({
                 "order": [[ 3, "asc" ]],
                 "pageLength": 25,
+                "columnDefs": [
+                    { "targets": 2, "searchable": false },
+                    { "targets": 3, "searchable": false },
+                    { "targets": 5, "searchable": false },
+                    { "targets": 6, "searchable": false }
+                ],
                 initComplete: function () {
                     this.api().columns(':not([data-noFilter])').every(function () {
                         var column = this;
