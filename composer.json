@@ -1,5 +1,6 @@
 {
     "require": {
-        "gentle/bitbucket-api": "^0.8"
+        "gentle/bitbucket-api": "^0.8",
+        "nesbot/carbon": "^1.21"
     }
 }
