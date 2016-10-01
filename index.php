@@ -77,8 +77,12 @@ $issues = json_decode(file_get_contents($issueFileName));
 
             ?>
             <tr class="<?= $rowClass; ?>">
-                <td><?= $issue->repository->name; ?></td>
-                <td><?= $issue->title; ?></td>
+                <td data-href="<?= $issue->repository->links->html->href; ?>">
+                    <?= $issue->repository->name; ?>
+                </td>
+                <td data-href="<?= $issue->links->html->href; ?>">
+                    <?= $issue->title; ?>
+                </td>
                 <td><?= $issue->kind; ?></td>
                 <td><?= $issue->priority; ?></td>
                 <td><?= $state; ?></td>
@@ -94,11 +98,23 @@ $issues = json_decode(file_get_contents($issueFileName));
     </table>
 
     <script>
+
+        function datatablesCellLinkRender(nTd) {
+            var href = $(nTd).data('href');
+            var text = $(nTd).text();
+
+            if (typeof href !== 'undefined' && href !== '') {
+                $(nTd).html('<a href="'+href+'">'+text+"</a>");
+            }
+        }
+
         $(document).ready(function () {
             $('#issues').DataTable({
                 "order": [[ 3, "asc" ]],
                 "pageLength": 25,
                 "columnDefs": [
+                    { "targets": 0, "fnCreatedCell": datatablesCellLinkRender},
+                    { "targets": 1, "fnCreatedCell": datatablesCellLinkRender },
                     { "targets": 2, "searchable": false },
                     { "targets": 3, "searchable": false },
                     { "targets": 5, "searchable": false },
