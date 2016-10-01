@@ -39,8 +39,8 @@ $issues = json_decode(file_get_contents($issueFileName));
         <tr>
             <th>Repo</th>
             <th data-noFilter>Title</th>
-            <th>T</th>
-            <th>P</th>
+            <th>Type</th>
+            <th>Priority</th>
             <th>Status</th>
             <th data-noFilter>Created</th>
             <th data-noFilter>Updated</th>
@@ -124,8 +124,8 @@ $issues = json_decode(file_get_contents($issueFileName));
                     this.api().columns(':not([data-noFilter])').every(function () {
                         var column = this;
 
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo($(column.header()))
+                        var select = $('<select><option value="">Any ' + $(column.header()).text() + '</option></select>')
+                            .appendTo($(column.header()).empty())
                             .on('click', function(e) {
                                 e.stopPropagation();
                             })
