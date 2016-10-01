@@ -4,14 +4,17 @@ use Carbon\Carbon;
 
 $loader = require 'vendor/autoload.php';
 
-$issues = json_decode(file_get_contents('issues.json'));
+$teamName = $_GET['teamName'];
+$issueFileName = str_replace(' ', '-', strtolower($teamName)) . '.json';
+
+$issues = json_decode(file_get_contents($issueFileName));
 
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Team Issue Manager</title>
+    <title><?= ucwords($teamName); ?> Issue Manager</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/datatables/media/css/jquery.dataTables.min.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -23,7 +26,7 @@ $issues = json_decode(file_get_contents('issues.json'));
 <div class="container">
 
     <div class="page-header">
-        <h1>Team Issues</h1>
+        <h1><?= ucwords($teamName); ?></h1>
     </div>
 
     <table id="issues" class="display" width="100%" cellspacing="0">
