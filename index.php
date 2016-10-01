@@ -25,6 +25,11 @@ $issues = json_decode(file_get_contents($issueFileName));
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <style type="text/css">
+        table.dataTable thead th[data-noFilter] select {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -42,8 +47,8 @@ $issues = json_decode(file_get_contents($issueFileName));
             <th>T</th>
             <th>P</th>
             <th>Status</th>
-            <th>Created</th>
-            <th>Updated</th>
+            <th data-noFilter>Created</th>
+            <th data-noFilter>Updated</th>
         </tr>
         </thead>
         <tbody>
