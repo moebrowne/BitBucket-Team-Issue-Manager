@@ -77,7 +77,7 @@ $issues = json_decode(file_get_contents($issueFileName));
 
             ?>
             <tr class="<?= $rowClass; ?>">
-                <td data-href="<?= $issue->repository->links->html->href; ?>">
+                <td data-href="<?= $issue->repository->links->html->href; ?>" data-icon="<?= $issue->repository->links->avatar->href; ?>">
                     <?= $issue->repository->name; ?>
                 </td>
                 <td data-href="<?= $issue->links->html->href; ?>">
@@ -99,12 +99,21 @@ $issues = json_decode(file_get_contents($issueFileName));
 
     <script>
 
-        function datatablesCellLinkRender(nTd) {
+        function datatablesCellRender(nTd) {
             var href = $(nTd).data('href');
+            var icon = $(nTd).data('icon');
             var text = $(nTd).text();
 
-            if (typeof href !== 'undefined' && href !== '') {
-                $(nTd).html('<a href="'+href+'">'+text+"</a>");
+            var hasLink = (typeof href !== 'undefined' && href !== '');
+            var hasIcon = (typeof icon !== 'undefined' && icon !== '');
+
+            if (hasLink === true) {
+                $(nTd).html('<a href="' + href + '">' + text + "</a>");
+            }
+
+            if (hasIcon) {
+                var targetElement = (hasLink === true) ? $(nTd).children('a'):$(nTd);
+                targetElement.prepend('<img src="' + icon + '" width="16" class="img-circle">&nbsp;');
             }
         }
 
@@ -113,8 +122,8 @@ $issues = json_decode(file_get_contents($issueFileName));
                 "order": [[ 3, "asc" ]],
                 "pageLength": 25,
                 "columnDefs": [
-                    { "targets": 0, "fnCreatedCell": datatablesCellLinkRender},
-                    { "targets": 1, "fnCreatedCell": datatablesCellLinkRender },
+                    { "targets": 0, "fnCreatedCell": datatablesCellRender },
+                    { "targets": 1, "fnCreatedCell": datatablesCellRender },
                     { "targets": 2, "searchable": false },
                     { "targets": 3, "searchable": false },
                     { "targets": 5, "searchable": false },
