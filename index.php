@@ -7,6 +7,10 @@ $loader = require 'vendor/autoload.php';
 $teamName = $_GET['teamName'];
 $issueFileName = str_replace(' ', '-', strtolower($teamName)) . '.json';
 
+if (!file_exists($issueFileName)) {
+    die("Can't load issue JSON file: " . $issueFileName);
+}
+
 $issues = json_decode(file_get_contents($issueFileName));
 
 ?>
