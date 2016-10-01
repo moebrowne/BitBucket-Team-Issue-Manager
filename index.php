@@ -54,11 +54,42 @@ $issues = json_decode(file_get_contents('issues.json'));
         </tr>
     <?php endforeach; ?>
     </tbody>
+    <tfoot>
+        <th>Repo</th>
+        <th>Title</th>
+        <th>T</th>
+        <th>P</th>
+        <th>Status</th>
+        <th>Created</th>
+        <th>Updated</th>
+    </tfoot>
 </table>
 
 <script>
     $(document).ready(function () {
-        $('#issues').DataTable();
+        $('#issues').DataTable({
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>')
+                    });
+                });
+            }
+        });
     });
 </script>
 
