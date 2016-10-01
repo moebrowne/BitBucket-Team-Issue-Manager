@@ -7,8 +7,7 @@ $loader = require 'vendor/autoload.php';
 $issues = json_decode(file_get_contents('issues.json'));
 
 ?>
-
-<!<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
