@@ -125,7 +125,7 @@ $issues = json_decode(file_get_contents($issueFileName));
                     { "targets": 0, "fnCreatedCell": datatablesCellRender },
                     { "targets": 1, "fnCreatedCell": datatablesCellRender },
                     { "targets": 5, "searchable": false },
-                    { "targets": 6, "searchable": false }
+                    { "targets": 6, "searchable": false, "visible": false }
                 ],
                 initComplete: function () {
                     this.api().columns(':not([data-noFilter])').every(function () {
