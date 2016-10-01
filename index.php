@@ -42,7 +42,7 @@ $issues = json_decode(file_get_contents($issueFileName));
             <th>T</th>
             <th>P</th>
             <th>Status</th>
-            <th>Created</th>
+            <th data-noFilter>Created</th>
             <th data-noFilter>Updated</th>
         </tr>
         </thead>
