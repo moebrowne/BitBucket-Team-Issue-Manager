@@ -104,6 +104,7 @@ $issues = json_decode(file_get_contents($issueFileName));
     <script>
         $(document).ready(function () {
             $('#issues').DataTable({
+                "order": [[ 3, "asc" ]],
                 initComplete: function () {
                     this.api().columns().every(function () {
                         var column = this;
