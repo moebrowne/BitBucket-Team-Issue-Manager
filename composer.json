@@ -1,0 +1,5 @@
+{
+    "require": {
+        "gentle/bitbucket-api": "^0.8"
+    }
+}
