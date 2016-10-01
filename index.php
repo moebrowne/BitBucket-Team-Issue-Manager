@@ -54,12 +54,32 @@ $issues = json_decode(file_get_contents($issueFileName));
             $createdOn = Carbon::parse($issue->created_on);
             $updatedOn = Carbon::parse($issue->updated_on);
 
+
+            // Set the row class
+            $rowClass = '';
+            switch($issue->priority) {
+                case 'critical':
+                    $rowClass = 'warning';
+                    break;
+                case 'blocker':
+                    $rowClass = 'danger';
+                    break;
+            }
+
+            switch($issue->state) {
+                case 'resolved':
+                    $rowClass = 'success';
+                    break;
+            }
+
             ?>
-            <tr>
+            <tr class="<?= $rowClass; ?>">
                 <td><?= $issue->repository->name; ?></td>
                 <td><?= $issue->title; ?></td>
                 <td><?= $issue->kind; ?></td>
-                <td><?= $issue->priority; ?></td>
+                <td>
+                    <?= $issue->priority; ?>
+                </td>
                 <td><?= $issue->state; ?></td>
                 <td data-order="<?= $createdOn->timestamp; ?>">
                     <?= $createdOn->diffForHumans(); ?>
