@@ -1,3 +1,3 @@
 # BitBucket Team Issue Management
 
-An interface that allows yoo to see, sort and filter all issues from a BitBucket team
+A tool that allows you to see, sort and filter all issues from a BitBucket team
