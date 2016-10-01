@@ -127,6 +127,10 @@ $issues = json_decode(file_get_contents($issueFileName));
                     { "targets": 5, "searchable": false },
                     { "targets": 6, "searchable": false, "visible": false }
                 ],
+                "language": {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search"
+                },
                 initComplete: function () {
                     this.api().columns(':not([data-noFilter])').every(function () {
                         var column = this;
