@@ -38,11 +38,11 @@ $issues = json_decode(file_get_contents($issueFileName));
         <thead>
         <tr>
             <th>Repo</th>
-            <th>Title</th>
+            <th data-noFilter>Title</th>
             <th>T</th>
             <th>P</th>
             <th>Status</th>
-            <th data-noFilter>Created</th>
+            <th>Created</th>
             <th data-noFilter>Updated</th>
         </tr>
         </thead>
