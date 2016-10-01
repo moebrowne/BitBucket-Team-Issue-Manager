@@ -1,0 +1,14 @@
+{
+  "name": "BitBucket-team-issue-manager",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "datatables": "^1.10.12",
+    "font-awesome": "^4.6.3",
+    "jquery": "^2.2.4"
+  },
+  "devDependencies": {},
+  "author": "MoeBrowne",
+  "license": "GPL-3.0"
+}

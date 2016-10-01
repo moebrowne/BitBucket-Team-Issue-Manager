@@ -1,5 +1,6 @@
 auth.json
 
 vendor
+node_modules
 
 .idea
