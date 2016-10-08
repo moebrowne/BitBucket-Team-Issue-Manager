@@ -4,7 +4,7 @@ $loader = require 'vendor/autoload.php';
 
 require_once 'auth.php';
 
-$team = $arg[1];
+$team = $argv[1];
 
 if (empty($team) === true) {
     throw new Exception('Team name must be specified: '.$argv[0].' team-name');
