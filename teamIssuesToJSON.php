@@ -4,7 +4,7 @@ $loader = require 'vendor/autoload.php';
 
 require_once 'auth.php';
 
-$team = '';
+$team = $arg[1];
 
 $teamRepositoryResponse = $bitbucket->api('Repositories')->all($team);
 $teamRepositories = json_decode($teamRepositoryResponse->getContent());
