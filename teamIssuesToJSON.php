@@ -6,6 +6,10 @@ require_once 'auth.php';
 
 $team = $arg[1];
 
+if (empty($team) === true) {
+    throw new Exception('Team name must be specified: '.$argv[0].' team-name');
+}
+
 $teamRepositoryResponse = $bitbucket->api('Repositories')->all($team);
 $teamRepositories = json_decode($teamRepositoryResponse->getContent());
 
