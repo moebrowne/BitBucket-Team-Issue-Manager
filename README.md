@@ -2,6 +2,8 @@
 
 A tool that allows you to see, sort and filter all issues from all repositories in a BitBucket team.
 
+![An example of the BitBucket Team Issue Manager](screenshot.png)
+
 ## Setup
 
 #### 1: Get the code!
@@ -40,7 +42,3 @@ php -S localhost:9090
 ```
 
 And browse to `http://localhost:9090/index.php?teamName=TEAM_ID`
-
-## Screenshot
-
-![An example of the BitBucket Team Issue Manager](screenshot.png)
