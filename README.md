@@ -2,6 +2,8 @@
 
 A tool that allows you to see, sort, filter and search all issues from all repositories in a BitBucket team.
 
+## Screenshot
+
 ![An example of the BitBucket Team Issue Manager](screenshot.png)
 
 ## Setup
