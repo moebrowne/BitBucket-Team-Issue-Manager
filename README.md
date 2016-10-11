@@ -25,7 +25,7 @@ On the BitBucket team management page (`https://bitbucket.org/account/user/<TEAM
 
 Next copy the example `auth-sample.json` to `auth.json` and populate it with the Key and Secret from the new OAuth consumer.
 
-#### 4: Run the JSONifier
+#### 3: Run the JSONifier
 
 Next we need to get all the issues from BitBucket, this is easily done by calling:
 
