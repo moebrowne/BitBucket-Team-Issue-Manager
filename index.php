@@ -86,10 +86,10 @@ $issues = json_decode(file_get_contents($issueFileName));
                 <td><?= $issue->kind; ?></td>
                 <td><?= $issue->priority; ?></td>
                 <td><?= $state; ?></td>
-                <td data-order="<?= $createdOn->timestamp; ?>">
+                <td data-order="<?= $createdOn->timestamp; ?>" title="<?= $createdOn->format(DateTime::RFC1123); ?>">
                     <?= $createdOn->diffForHumans(); ?>
                 </td>
-                <td data-order="<?= $updatedOn->timestamp; ?>">
+                <td data-order="<?= $updatedOn->timestamp; ?>" title="<?= $updatedOn->format(DateTime::RFC1123); ?>">
                     <?= $updatedOn->diffForHumans(); ?>
                 </td>
             </tr>
