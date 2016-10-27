@@ -13,6 +13,10 @@ if (!file_exists($issueFileName)) {
 
 $issues = json_decode(file_get_contents($issueFileName));
 
+if (json_last_error() !== JSON_ERROR_NONE) {
+    die("ERROR: ".json_last_error_msg());
+}
+
 ?>
 <!doctype html>
 <html lang="en">
