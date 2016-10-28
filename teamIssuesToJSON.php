@@ -13,6 +13,10 @@ if (empty($team) === true) {
 $teamRepositoryResponse = $bitbucket->api('Repositories')->all($team);
 $teamRepositories = json_decode($teamRepositoryResponse->getContent());
 
+if (json_last_error() !== JSON_ERROR_NONE) {
+    throw new Exception("ERROR: ".json_last_error_msg());
+}
+
 /**
  * @param $team
  * @param $teamRepositorySlug
