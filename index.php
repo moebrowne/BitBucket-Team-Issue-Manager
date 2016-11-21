@@ -17,6 +17,9 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     die("ERROR: ".json_last_error_msg());
 }
 
+$fileStats = stat($issueFileName);
+$fileModTime = Carbon::createFromTimestamp($fileStats['mtime']);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,7 +38,10 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 <div class="container">
 
     <div class="page-header">
-        <h1><?= ucwords($teamName); ?></h1>
+        <h1>
+            <?= ucwords($teamName); ?>
+            <small style="float: right; font-size: 13px;">Updated <?= $fileModTime->diffForHumans(); ?></small>
+        </h1>
     </div>
 
     <table id="issues" class="table table-striped table-hover" width="100%" cellspacing="0">
