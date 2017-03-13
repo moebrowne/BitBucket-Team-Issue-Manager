@@ -16,6 +16,8 @@ git clone git@github.com:moebrowne/BitBucket-Team-Issue-Manger.git
 cd BitBucket-Team-Issue-Manger
 
 composer install
+yarn
+# or
 npm install
 ```
  
