@@ -1,4 +1,7 @@
 {
+    "name": "moebrowne/bitbucket-team-issue-manger",
+    "description": "A tool that allows you to see, sort and filter all issues from a BitBucket team",
+    "license": "GPL-3.0",
     "require": {
         "gentle/bitbucket-api": "^0.8",
         "nesbot/carbon": "^1.21"
