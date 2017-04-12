@@ -1,5 +1,7 @@
 <?php
 
+use Bitbucket\API\Http\Response\Pager;
+
 $loader = require 'vendor/autoload.php';
 
 require_once 'auth.php';
@@ -10,50 +12,26 @@ if (empty($team) === true) {
     throw new Exception('Team name must be specified: '.$argv[0].' team-name');
 }
 
-$teamRepositoryResponse = $bitbucket->api('Repositories')->all($team);
-$teamRepositories = json_decode($teamRepositoryResponse->getContent());
+$repoIssues = $bitbucket->api('Repositories');
+$page = new Pager($repoIssues->getClient(), $repoIssues->all($team));
+
+$teamRepositories = json_decode($page->fetchAll()->getContent());
 
 if (json_last_error() !== JSON_ERROR_NONE) {
     throw new Exception("ERROR: ".json_last_error_msg());
 }
-
-/**
- * @param $team
- * @param $teamRepositorySlug
- * @param int $page
- * @return array
- */
-function getAllIssues($team, $teamRepositorySlug, $page = 1) {
-
-    global $bitbucket;
-
-    $options = [
-        'page' => $page,
-    ];
-
-    $teamIssuesResponse = $bitbucket->api('Repositories\Issues')->all($team, $teamRepositorySlug, $options);
-    $teamIssues = json_decode($teamIssuesResponse->getContent());
-
-    $issues = $teamIssues->values;
-
-    $nextPageIssues = [];
-    if ($teamIssues->size > $page*$teamIssues->pagelen) {
-        $nextPageIssues = getAllIssues($team, $teamRepositorySlug, $page+1);
-    }
-
-    $issuesAll = array_merge($issues, $nextPageIssues);
-    return $issuesAll;
-}
-
 
 $issues = [];
 foreach ($teamRepositories->values as $teamRepository) {
 
     $teamRepositorySlug = str_replace($team . '/', '', $teamRepository->full_name);
 
-    $teamIssues = getAllIssues($team, $teamRepositorySlug);
+    $repoIssues = $bitbucket->api('Repositories\Issues');
+    $page = new Pager($repoIssues->getClient(), $repoIssues->all($team, $teamRepositorySlug));
 
-    foreach ($teamIssues as $teamIssue) {
+    $teamIssues = json_decode($page->fetchAll()->getContent());
+
+    foreach ($teamIssues->values as $teamIssue) {
         array_push($issues, $teamIssue);
     }
 
