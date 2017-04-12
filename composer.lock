@@ -4,32 +4,34 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97bf5269317903aa68ce45c029b9b578",
+    "content-hash": "3b1cfa453bb0740837766d5a79b5f4b4",
     "packages": [
         {
             "name": "gentle/bitbucket-api",
-            "version": "0.8.2",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gentlero/bitbucket-api.git",
-                "reference": "00feb80598aa83d5c2c26d8bfedd3aebfc1e121a"
+                "reference": "095f4271dabc8a649e5470fc5b3d9abbb82b58ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gentlero/bitbucket-api/zipball/00feb80598aa83d5c2c26d8bfedd3aebfc1e121a",
-                "reference": "00feb80598aa83d5c2c26d8bfedd3aebfc1e121a",
+                "url": "https://api.github.com/repos/gentlero/bitbucket-api/zipball/095f4271dabc8a649e5470fc5b3d9abbb82b58ef",
+                "reference": "095f4271dabc8a649e5470fc5b3d9abbb82b58ef",
                 "shasum": ""
             },
             "require": {
-                "jacobkiers/oauth": "~1.0.10",
-                "kriswallsmith/buzz": "~0.13",
-                "php": ">=5.3"
+                "jacobkiers/oauth": "~1.0",
+                "kriswallsmith/buzz": "~0.15",
+                "php": ">=5.4.0"
             },
             "conflict": {
-                "eabay/bitbucket-repo-sync": "*"
+                "eabay/bitbucket-repo-sync": "*",
+                "rlacerda83/bitbucket-api": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.7"
             },
             "suggest": {
                 "ext-curl": "*"
@@ -55,13 +57,13 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Bitbucket API wrapper for PHP >= 5.3",
+            "description": "Bitbucket API wrapper for PHP >= 5.4",
             "homepage": "https://bitbucket.org/gentlero/bitbucket-api",
             "keywords": [
                 "api",
                 "bitbucket"
             ],
-            "time": "2017-01-10T14:45:19+00:00"
+            "time": "2017-01-10 12:23:36"
         },
         {
             "name": "jacobkiers/oauth",
@@ -284,16 +286,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.2.6",
+            "version": "v3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "0e1b15ce8fbf3890f4ccdac430ed5e07fdfe0690"
+                "reference": "c740eee70783d2af4d3d6b70d5146f209e6b4d13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/0e1b15ce8fbf3890f4ccdac430ed5e07fdfe0690",
-                "reference": "0e1b15ce8fbf3890f4ccdac430ed5e07fdfe0690",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/c740eee70783d2af4d3d6b70d5146f209e6b4d13",
+                "reference": "c740eee70783d2af4d3d6b70d5146f209e6b4d13",
                 "shasum": ""
             },
             "require": {
@@ -344,13 +346,15 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-04T12:23:14+00:00"
+            "time": "2017-03-21T21:44:32+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "gentle/bitbucket-api": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
