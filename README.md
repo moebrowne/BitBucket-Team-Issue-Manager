@@ -45,4 +45,4 @@ You should now be able to see your data if you run up a little test server:
 php -S localhost:9090
 ```
 
-And browse to `http://localhost:9090/index.php?teamName=TEAM_ID`
+And browse to `http://localhost:9090/?teamName=TEAM_ID`
