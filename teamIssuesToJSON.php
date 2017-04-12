@@ -21,6 +21,8 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     throw new Exception("ERROR: ".json_last_error_msg());
 }
 
+echo 'Found ' . count($teamRepositories->values) . ' repositories' . PHP_EOL;
+
 $issues = [];
 foreach ($teamRepositories->values as $teamRepository) {
 
@@ -31,11 +33,15 @@ foreach ($teamRepositories->values as $teamRepository) {
 
     $teamIssues = json_decode($page->fetchAll()->getContent());
 
+    echo $teamRepository->full_name . ': Found ' . count($teamIssues->values) . ' issue(s)' . PHP_EOL;
+
     foreach ($teamIssues->values as $teamIssue) {
         array_push($issues, $teamIssue);
     }
 
 }
+
+echo 'Found ' . count($issues) . ' issues total' . PHP_EOL;
 
 $json = json_encode($issues);
 
