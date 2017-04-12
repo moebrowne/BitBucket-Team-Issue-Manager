@@ -11,7 +11,7 @@ A tool that allows you to see, sort, filter and search all issues from all repos
 #### 1: Get the code!
 
 ```
-git clone git@github.com:moebrowne/BitBucket-Team-Issue-Manger.git
+git clone https://github.com/moebrowne/BitBucket-Team-Issue-Manger.git
 
 cd BitBucket-Team-Issue-Manger
 
