@@ -37,9 +37,6 @@ foreach ($teamRepositories->values as $teamRepository) {
 
 }
 
-header('Content-Type: application/json');
 $json = json_encode($issues);
-
-echo $json;
 
 file_put_contents($team . '.json', $json);
