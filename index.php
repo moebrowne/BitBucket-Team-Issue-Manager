@@ -18,7 +18,8 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 
 $fileStats = stat($issueFileName);
-$fileModTime = Carbon::createFromTimestamp($fileStats['mtime']);
+
+$fileModTime = ($fileStats !== false) ? Carbon::createFromTimestamp($fileStats['mtime']) : null;
 
 ?>
 <!doctype html>
@@ -40,7 +41,9 @@ $fileModTime = Carbon::createFromTimestamp($fileStats['mtime']);
     <div class="page-header">
         <h1>
             <?= ucwords($teamName); ?>
-            <small style="float: right; font-size: 13px;">Updated <?= $fileModTime->diffForHumans(); ?></small>
+            <?php if ($fileModTime !== null) : ?>
+                <small style="float: right; font-size: 13px;">Updated <?= $fileModTime->diffForHumans(); ?></small>
+            <?php endif; ?>
         </h1>
     </div>
 
