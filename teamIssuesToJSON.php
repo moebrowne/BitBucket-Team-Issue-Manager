@@ -29,7 +29,16 @@ foreach ($teamRepositories->values as $teamRepository) {
     $teamRepositorySlug = str_replace($team . '/', '', $teamRepository->full_name);
 
     $repoIssues = $bitbucket->api('Repositories\Issues');
-    $page = new Pager($repoIssues->getClient(), $repoIssues->all($team, $teamRepositorySlug));
+    $response = $repoIssues->all($team, $teamRepositorySlug);
+
+    $responseContentArray = json_decode($response->getContent(), true);
+
+    if (array_key_exists('type', $responseContentArray) && $responseContentArray['type'] === 'error') {
+        echo $teamRepository->full_name . ': ' . $responseContentArray['error']['message'] . PHP_EOL;
+        continue;
+    }
+
+    $page = new Pager($repoIssues->getClient(), $response);
 
     $teamIssues = json_decode($page->fetchAll()->getContent());
 
