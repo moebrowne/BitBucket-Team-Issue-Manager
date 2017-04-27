@@ -8,13 +8,13 @@ $teamName = $_GET['teamName'];
 $issueFileName = $teamName . '.json';
 
 if (!file_exists($issueFileName)) {
-    die("Can't load issue JSON file: " . $issueFileName);
+    throw new Exception("Can't load issue JSON! (" . $issueFileName . ")");
 }
 
 $issues = json_decode(file_get_contents($issueFileName));
 
 if (json_last_error() !== JSON_ERROR_NONE) {
-    die("ERROR: ".json_last_error_msg());
+    throw new Exception("Error parsing JSON! (" . json_last_error_msg() . ")");
 }
 
 $fileStats = stat($issueFileName);
