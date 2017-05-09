@@ -121,7 +121,7 @@ $fileModTime = ($fileStats !== false) ? Carbon::createFromTimestamp($fileStats['
             var hasIcon = (typeof icon !== 'undefined' && icon !== '');
 
             if (hasLink === true) {
-                $(nTd).html('<a href="' + href + '">' + text + "</a>");
+                $(nTd).html('<a href="' + href + '" target="_blank">' + text + "</a>");
             }
 
             if (hasIcon) {
