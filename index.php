@@ -147,6 +147,12 @@ $fileModTime = ($fileStats !== false) ? Carbon::createFromTimestamp($fileStats['
                 initComplete: function () {
                     this.api().columns(':not([data-noFilter])').every(function () {
                         var column = this;
+                        var options = column.data().unique().sort();
+
+                        // Dont show a dropdown filter if there is only a single option
+                        if (options.length === 1) {
+                            return;
+                        }
 
                         var select = $('<select><option value="">Any ' + $(column.header()).text() + '</option></select>')
                             .appendTo($(column.header()).empty())
@@ -163,7 +169,7 @@ $fileModTime = ($fileStats !== false) ? Carbon::createFromTimestamp($fileStats['
                                     .draw();
                             });
 
-                        column.data().unique().sort().each(function (d, j) {
+                        options.each(function (d, j) {
                             select.append('<option value="' + d + '">' + d + '</option>')
                         });
                     });
