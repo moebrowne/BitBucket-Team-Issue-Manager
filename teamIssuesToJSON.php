@@ -2,9 +2,9 @@
 
 use Bitbucket\API\Http\Response\Pager;
 
-$loader = require 'vendor/autoload.php';
+$loader = require __DIR__ . '/vendor/autoload.php';
 
-require_once 'auth.php';
+require_once  __DIR__ . '/auth.php';
 
 $team = $argv[1];
 

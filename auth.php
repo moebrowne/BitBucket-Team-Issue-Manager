@@ -3,7 +3,7 @@
 use Bitbucket\API\Api;
 use Bitbucket\API\Http\Listener\OAuthListener;
 
-$authFileName = 'auth.json';
+$authFileName = __DIR__ . '/auth.json';
 
 if (!file_exists($authFileName)) {
     throw new Exception("ERROR: auth.json is missing.");
