@@ -54,4 +54,4 @@ echo 'Found ' . count($issues) . ' issues total' . PHP_EOL;
 
 $json = json_encode($issues);
 
-file_put_contents($team . '.json', $json);
+file_put_contents(__DIR__ . '/' . $team . '.json', $json);
