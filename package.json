@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "algoliasearch": "^3.24.0",
     "bootstrap": "^3.3.6",
     "datatables": "^1.10.12",
     "font-awesome": "^4.6.3",
