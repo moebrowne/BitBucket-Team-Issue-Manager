@@ -55,6 +55,7 @@ foreach ($teamRepositories->values as $teamRepository) {
             'component' => $teamIssue->component,
             'assignee' => $teamIssue->assignee,
             'reporter' => $teamIssue->reporter,
+            'repository' => $teamIssue->repository,
             'edited_on' => $teamIssue->edited_on,
             'created_on' => $teamIssue->created_on,
         ];
