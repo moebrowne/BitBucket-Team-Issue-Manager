@@ -21,5 +21,5 @@ $bitbucket->getClient()->setApiVersion('2.0')->addListener(
     new OAuthListener($credentials)
 );
 
-$searchClient = new Client($credentials->algolia->app_id, $credentials->algolia->api_key);
+$searchClient = new Client($credentials['algolia']['app_id'], $credentials['algolia']['api_key']);
 $searchIndex = $searchClient->initIndex('BITBUCKET ISSUE');
