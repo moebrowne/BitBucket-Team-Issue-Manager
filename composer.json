@@ -4,6 +4,7 @@
     "license": "GPL-3.0",
     "require": {
         "gentle/bitbucket-api": "dev-develop",
-        "nesbot/carbon": "^1.21"
+        "nesbot/carbon": "^1.21",
+        "algolia/algoliasearch-client-php": "^1.18"
     }
 }
