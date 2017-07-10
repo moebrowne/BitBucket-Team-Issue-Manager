@@ -1,5 +1,6 @@
 <?php
 
+use AlgoliaSearch\Client;
 use Bitbucket\API\Api;
 use Bitbucket\API\Http\Listener\OAuthListener;
 
@@ -19,3 +20,6 @@ $bitbucket = new Api();
 $bitbucket->getClient()->setApiVersion('2.0')->addListener(
     new OAuthListener($credentials)
 );
+
+$searchClient = new Client($credentials->algolia->app_id, $credentials->algolia->api_key);
+$searchIndex = $searchClient->initIndex('BITBUCKET ISSUE');
