@@ -71,7 +71,7 @@ require __DIR__ . '/auth.php';
                     <hr>
                     <h2>Repo</h2>
                     <?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
-                        <span data-facet-name="repository" data-facet-value="<?= $facet['value'] ?>" class="label label-success"><?= $facet['value'] ?></span>
+                        <span data-facet-name="repository.name" data-facet-value="<?= $facet['value'] ?>" class="label label-success"><?= $facet['value'] ?></span>
                     <?php endforeach; ?>
                 </div>
             </div>
