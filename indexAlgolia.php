@@ -36,27 +36,30 @@ require __DIR__ . '/auth.php';
             <div class="row">
                 <div class="col-md-12" style="line-height: 24px;">
                     <h2>Type</h2>
-                    <span class="facet facet-kind label label-success">bug</span>
-                    <span class="facet facet-kind label label-success">enhancement</span>
-                    <span class="facet facet-kind label label-success">task</span>
-                    <span class="facet facet-kind label label-success">proposal</span>
+                    <span class="facet facet-kind label label-success">all</span>
+                    <span class="facet facet-kind label label-default">bug</span>
+                    <span class="facet facet-kind label label-default">enhancement</span>
+                    <span class="facet facet-kind label label-default">task</span>
+                    <span class="facet facet-kind label label-default">proposal</span>
                 </div>
             </div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Priority</h2>
-					<span class="facet facet-priority label label-success">blocker</span>
-					<span class="facet facet-priority label label-success">critical</span>
-					<span class="facet facet-priority label label-success">major</span>
-					<span class="facet facet-priority label label-success">minor</span>
-					<span class="facet facet-priority label label-success">trivial</span>
+                    <span class="facet facet-priority label label-success">all</span>
+					<span class="facet facet-priority label label-default">blocker</span>
+					<span class="facet facet-priority label label-default">critical</span>
+					<span class="facet facet-priority label label-default">major</span>
+					<span class="facet facet-priority label label-default">minor</span>
+					<span class="facet facet-priority label label-default">trivial</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Status</h2>
+                    <span class="facet facet-state label label-default">all</span>
 					<span class="facet facet-state label label-success">open</span>
 					<span class="facet facet-state label label-default">closed</span>
 					<span class="facet facet-state label label-default">resolved</span>
@@ -70,8 +73,9 @@ require __DIR__ . '/auth.php';
                 <div class="col-md-12" style="line-height: 24px;">
                     <hr>
                     <h2>Repo</h2>
+                    <span class="facet facet-repository label label-success">all</span>
                     <?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
-                        <span class="facet facet-repository label label-success"><?= $facet['value'] ?></span>
+                        <span class="facet facet-repository label label-default"><?= $facet['value'] ?></span>
                     <?php endforeach; ?>
                 </div>
             </div>
