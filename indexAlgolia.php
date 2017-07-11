@@ -37,7 +37,7 @@ require __DIR__ . '/auth.php';
 				<div class="col-md-12" style="line-height: 24px;">
 					<h2>Repo</h2>
 					<?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
-                        <span class="facet facet-repository label label-default"><?= $facet['value'] ?></span>
+                        <span class="facet facet-repository label label-success"><?= $facet['value'] ?></span>
                     <?php endforeach; ?>
 				</div>
 			</div>
