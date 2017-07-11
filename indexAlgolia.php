@@ -1,3 +1,7 @@
+<?php
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/auth.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,13 +35,21 @@
 		<div class="col-md-3">
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
-					<h2>Type</h2>
-					<span class="facet facet-kind label label-default">bug</span>
-					<span class="facet facet-kind label label-default">enhancement</span>
-					<span class="facet facet-kind label label-default">task</span>
-					<span class="facet facet-kind label label-default">proposal</span>
+					<h2>Repo</h2>
+					<?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
+                        <span class="facet facet-repository label label-default"><?= $facet['value'] ?></span>
+                    <?php endforeach; ?>
 				</div>
 			</div>
+            <div class="row">
+                <div class="col-md-12" style="line-height: 24px;">
+                    <h2>Type</h2>
+                    <span class="facet facet-kind label label-default">bug</span>
+                    <span class="facet facet-kind label label-default">enhancement</span>
+                    <span class="facet facet-kind label label-default">task</span>
+                    <span class="facet facet-kind label label-default">proposal</span>
+                </div>
+            </div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
@@ -90,7 +102,8 @@
 	var facets = {
 		kind: [],
 		priority: [],
-		state: []
+		state: [],
+        'repository.name': []
 	};
 
 	$('#facets').on('click', '.facet', function (e) {
@@ -106,14 +119,29 @@
 		if (clicked.hasClass('facet-state')) {
 			facetName = 'state';
 		}
+		if (clicked.hasClass('facet-repository')) {
+			facetName = 'repository.name';
+		}
 
-		let index = facets[facetName].indexOf(clicked.text());
+		let clickedFacetValue = clicked.text();
+		let index = facets[facetName].indexOf(clickedFacetValue);
+
 		if (index !== -1) {
 			delete facets[facetName][index];
+
+			if (clickedFacetValue === 'open') {
+				delete facets[facetName][facets[facetName].indexOf('new')];
+			}
+
 			clicked.addClass('label-default').removeClass('label-success');
 		}
 		else {
-			facets[facetName].push(clicked.text());
+			facets[facetName].push(clickedFacetValue);
+
+			if (clickedFacetValue === 'open') {
+				facets[facetName].push('new');
+			}
+
 			clicked.addClass('label-success').removeClass('label-default');
 		}
 		doSearch();
