@@ -36,30 +36,27 @@ require __DIR__ . '/auth.php';
             <div class="row">
                 <div class="col-md-12" style="line-height: 24px;">
                     <h2>Type</h2>
-                    <span data-facet-name="kind" data-facet-value="all" class="label label-success">all</span>
-                    <span data-facet-name="kind" data-facet-value="bug" class="label label-default">bug</span>
-                    <span data-facet-name="kind" data-facet-value="enhancement" class="label label-default">enhancement</span>
-                    <span data-facet-name="kind" data-facet-value="task" class="label label-default">task</span>
-                    <span data-facet-name="kind" data-facet-value="proposal" class="label label-default">proposal</span>
+                    <span data-facet-name="kind" data-facet-value="bug" class="label label-success">bug</span>
+                    <span data-facet-name="kind" data-facet-value="enhancement" class="label label-success">enhancement</span>
+                    <span data-facet-name="kind" data-facet-value="task" class="label label-success">task</span>
+                    <span data-facet-name="kind" data-facet-value="proposal" class="label label-success">proposal</span>
                 </div>
             </div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Priority</h2>
-                    <span data-facet-name="priority" data-facet-value="all" class="label label-success">all</span>
-					<span data-facet-name="priority" data-facet-value="blocker" class="label label-default">blocker</span>
-					<span data-facet-name="priority" data-facet-value="critical" class="label label-default">critical</span>
-					<span data-facet-name="priority" data-facet-value="major" class="label label-default">major</span>
-					<span data-facet-name="priority" data-facet-value="minor" class="label label-default">minor</span>
-					<span data-facet-name="priority" data-facet-value="trivial" class="label label-default">trivial</span>
+					<span data-facet-name="priority" data-facet-value="blocker" class="label label-success">blocker</span>
+					<span data-facet-name="priority" data-facet-value="critical" class="label label-success">critical</span>
+					<span data-facet-name="priority" data-facet-value="major" class="label label-success">major</span>
+					<span data-facet-name="priority" data-facet-value="minor" class="label label-success">minor</span>
+					<span data-facet-name="priority" data-facet-value="trivial" class="label label-success">trivial</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Status</h2>
-                    <span data-facet-name="state" data-facet-value="all" class="label label-default">all</span>
 					<span data-facet-name="state" data-facet-value="open" class="label label-success">open</span>
 					<span data-facet-name="state" data-facet-value="closed" class="label label-default">closed</span>
 					<span data-facet-name="state" data-facet-value="resolved" class="label label-default">resolved</span>
@@ -73,9 +70,8 @@ require __DIR__ . '/auth.php';
                 <div class="col-md-12" style="line-height: 24px;">
                     <hr>
                     <h2>Repo</h2>
-                    <span data-facet-name="repository" data-facet-value="all" class="label label-success">all</span>
                     <?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
-                        <span data-facet-name="repository" data-facet-value="<?= $facet['value'] ?>" class="label label-default"><?= $facet['value'] ?></span>
+                        <span data-facet-name="repository" data-facet-value="<?= $facet['value'] ?>" class="label label-success"><?= $facet['value'] ?></span>
                     <?php endforeach; ?>
                 </div>
             </div>
