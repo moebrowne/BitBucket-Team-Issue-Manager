@@ -33,14 +33,6 @@ require __DIR__ . '/auth.php';
 
 	<div id="facets" class="row">
 		<div class="col-md-3">
-			<div class="row">
-				<div class="col-md-12" style="line-height: 24px;">
-					<h2>Repo</h2>
-					<?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
-                        <span class="facet facet-repository label label-success"><?= $facet['value'] ?></span>
-                    <?php endforeach; ?>
-				</div>
-			</div>
             <div class="row">
                 <div class="col-md-12" style="line-height: 24px;">
                     <h2>Type</h2>
@@ -74,6 +66,15 @@ require __DIR__ . '/auth.php';
 					<span class="facet facet-state label label-default">duplicate</span>
 				</div>
 			</div>
+            <div class="row">
+                <div class="col-md-12" style="line-height: 24px;">
+                    <hr>
+                    <h2>Repo</h2>
+                    <?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
+                        <span class="facet facet-repository label label-success"><?= $facet['value'] ?></span>
+                    <?php endforeach; ?>
+                </div>
+            </div>
 		</div>
 		<div class="col-md-9">
 			<table id="issues" class="table table-striped table-hover" width="100%" cellspacing="0">
