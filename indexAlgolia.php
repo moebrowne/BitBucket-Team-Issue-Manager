@@ -36,46 +36,46 @@ require __DIR__ . '/auth.php';
             <div class="row">
                 <div class="col-md-12" style="line-height: 24px;">
                     <h2>Type</h2>
-                    <span class="facet facet-kind label label-success">all</span>
-                    <span class="facet facet-kind label label-default">bug</span>
-                    <span class="facet facet-kind label label-default">enhancement</span>
-                    <span class="facet facet-kind label label-default">task</span>
-                    <span class="facet facet-kind label label-default">proposal</span>
+                    <span data-facet-name="kind" data-facet-value="all" class="label label-success">all</span>
+                    <span data-facet-name="kind" data-facet-value="bug" class="label label-default">bug</span>
+                    <span data-facet-name="kind" data-facet-value="enhancement" class="label label-default">enhancement</span>
+                    <span data-facet-name="kind" data-facet-value="task" class="label label-default">task</span>
+                    <span data-facet-name="kind" data-facet-value="proposal" class="label label-default">proposal</span>
                 </div>
             </div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Priority</h2>
-                    <span class="facet facet-priority label label-success">all</span>
-					<span class="facet facet-priority label label-default">blocker</span>
-					<span class="facet facet-priority label label-default">critical</span>
-					<span class="facet facet-priority label label-default">major</span>
-					<span class="facet facet-priority label label-default">minor</span>
-					<span class="facet facet-priority label label-default">trivial</span>
+                    <span data-facet-name="priority" data-facet-value="all" class="label label-success">all</span>
+					<span data-facet-name="priority" data-facet-value="blocker" class="label label-default">blocker</span>
+					<span data-facet-name="priority" data-facet-value="critical" class="label label-default">critical</span>
+					<span data-facet-name="priority" data-facet-value="major" class="label label-default">major</span>
+					<span data-facet-name="priority" data-facet-value="minor" class="label label-default">minor</span>
+					<span data-facet-name="priority" data-facet-value="trivial" class="label label-default">trivial</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Status</h2>
-                    <span class="facet facet-state label label-default">all</span>
-					<span class="facet facet-state label label-success">open</span>
-					<span class="facet facet-state label label-default">closed</span>
-					<span class="facet facet-state label label-default">resolved</span>
-					<span class="facet facet-state label label-default">invalid</span>
-					<span class="facet facet-state label label-default">wontfix</span>
-					<span class="facet facet-state label label-default">onhold</span>
-					<span class="facet facet-state label label-default">duplicate</span>
+                    <span data-facet-name="state" data-facet-value="all" class="label label-default">all</span>
+					<span data-facet-name="state" data-facet-value="open" class="label label-success">open</span>
+					<span data-facet-name="state" data-facet-value="closed" class="label label-default">closed</span>
+					<span data-facet-name="state" data-facet-value="resolved" class="label label-default">resolved</span>
+					<span data-facet-name="state" data-facet-value="invalid" class="label label-default">invalid</span>
+					<span data-facet-name="state" data-facet-value="wontfix" class="label label-default">wontfix</span>
+					<span data-facet-name="state" data-facet-value="onhold" class="label label-default">onhold</span>
+					<span data-facet-name="state" data-facet-value="duplicate" class="label label-default">duplicate</span>
 				</div>
 			</div>
             <div class="row">
                 <div class="col-md-12" style="line-height: 24px;">
                     <hr>
                     <h2>Repo</h2>
-                    <span class="facet facet-repository label label-success">all</span>
+                    <span data-facet-name="repository" data-facet-value="all" class="label label-success">all</span>
                     <?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
-                        <span class="facet facet-repository label label-default"><?= $facet['value'] ?></span>
+                        <span data-facet-name="repository" data-facet-value="<?= $facet['value'] ?>" class="label label-default"><?= $facet['value'] ?></span>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -110,32 +110,21 @@ require __DIR__ . '/auth.php';
 
         facets = {};
 
-        let selectedFacets = $('#facets .facet.label-success');
+        let selectedFacets = $('#facets [data-facet-name].label-success');
 
         selectedFacets.each(function (index, facet) {
             facet = $(facet);
-            let facetName;
 
-            if (facet.hasClass('facet-kind')) {
-                facetName = 'kind';
-            }
-            if (facet.hasClass('facet-priority')) {
-                facetName = 'priority';
-            }
-            if (facet.hasClass('facet-state')) {
-                facetName = 'state';
-            }
-            if (facet.hasClass('facet-repository')) {
-                facetName = 'repository.name';
-            }
+            let facetName = facet.attr('data-facet-name');
+            let facetValue = facet.attr('data-facet-value');
 
             if (typeof facets[facetName] === 'undefined') {
                 facets[facetName] = [];
             }
 
-            let facetValue = facet.text().trim();
-
             facets[facetName].push(facetValue);
+
+            console.log(facets);
 
             if (facetValue === 'open') {
                 facets[facetName].push('new');
@@ -143,25 +132,13 @@ require __DIR__ . '/auth.php';
         });
     }
 
-	$('#facets').on('click', '.facet', function (e) {
+	$('#facets').on('click', '[data-facet-name]', function (e) {
 
-		let facetName;
         let facet = $(this);
+        let facetName = facet.attr('data-facet-name');
+        let facetValue = facet.attr('data-facet-value');
 
-        if (facet.hasClass('facet-kind')) {
-            facetName = 'kind';
-        }
-        if (facet.hasClass('facet-priority')) {
-            facetName = 'priority';
-        }
-        if (facet.hasClass('facet-state')) {
-            facetName = 'state';
-        }
-        if (facet.hasClass('facet-repository')) {
-            facetName = 'repository.name';
-        }
-
-		if (typeof facets[facetName] !== 'undefined' && facets[facetName].indexOf(facet.text().trim()) !== -1) {
+		if (typeof facets[facetName] !== 'undefined' && facets[facetName].indexOf(facetValue) !== -1) {
             facet.addClass('label-default').removeClass('label-success');
 		}
 		else {
