@@ -44,28 +44,28 @@ require __DIR__ . '/auth.php';
             <div class="row">
                 <div class="col-md-12" style="line-height: 24px;">
                     <h2>Type</h2>
-                    <span class="facet facet-kind label label-default">bug</span>
-                    <span class="facet facet-kind label label-default">enhancement</span>
-                    <span class="facet facet-kind label label-default">task</span>
-                    <span class="facet facet-kind label label-default">proposal</span>
+                    <span class="facet facet-kind label label-success">bug</span>
+                    <span class="facet facet-kind label label-success">enhancement</span>
+                    <span class="facet facet-kind label label-success">task</span>
+                    <span class="facet facet-kind label label-success">proposal</span>
                 </div>
             </div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Priority</h2>
-					<span class="facet facet-priority label label-default">blocker</span>
-					<span class="facet facet-priority label label-default">critical</span>
-					<span class="facet facet-priority label label-default">major</span>
-					<span class="facet facet-priority label label-default">minor</span>
-					<span class="facet facet-priority label label-default">trivial</span>
+					<span class="facet facet-priority label label-success">blocker</span>
+					<span class="facet facet-priority label label-success">critical</span>
+					<span class="facet facet-priority label label-success">major</span>
+					<span class="facet facet-priority label label-success">minor</span>
+					<span class="facet facet-priority label label-success">trivial</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="line-height: 24px;">
 					<hr>
 					<h2>Status</h2>
-					<span class="facet facet-state label label-default">open</span>
+					<span class="facet facet-state label label-success">open</span>
 					<span class="facet facet-state label label-default">closed</span>
 					<span class="facet facet-state label label-default">resolved</span>
 					<span class="facet facet-state label label-default">invalid</span>
@@ -99,57 +99,75 @@ require __DIR__ . '/auth.php';
 	var client = algoliasearch("GCUCSOG907", "27b8e225cd6cc3eb2bc75d7824911909");
 	var index = client.initIndex('BITBUCKET ISSUE');
 
-	var facets = {
-		kind: [],
-		priority: [],
-		state: [],
-        'repository.name': []
-	};
+	var facets = {};
+
+    function populateFacetArray() {
+
+        facets = {};
+
+        let selectedFacets = $('#facets .facet.label-success');
+
+        selectedFacets.each(function (index, facet) {
+            facet = $(facet);
+            let facetName;
+
+            if (facet.hasClass('facet-kind')) {
+                facetName = 'kind';
+            }
+            if (facet.hasClass('facet-priority')) {
+                facetName = 'priority';
+            }
+            if (facet.hasClass('facet-state')) {
+                facetName = 'state';
+            }
+            if (facet.hasClass('facet-repository')) {
+                facetName = 'repository.name';
+            }
+
+            if (typeof facets[facetName] === 'undefined') {
+                facets[facetName] = [];
+            }
+
+            let facetValue = facet.text().trim();
+
+            facets[facetName].push(facetValue);
+
+            if (facetValue === 'open') {
+                facets[facetName].push('new');
+            }
+        });
+    }
 
 	$('#facets').on('click', '.facet', function (e) {
-		let clicked = $(this);
+
 		let facetName;
+        let facet = $(this);
 
-		if (clicked.hasClass('facet-kind')) {
-			facetName = 'kind';
-		}
-		if (clicked.hasClass('facet-priority')) {
-			facetName = 'priority';
-		}
-		if (clicked.hasClass('facet-state')) {
-			facetName = 'state';
-		}
-		if (clicked.hasClass('facet-repository')) {
-			facetName = 'repository.name';
-		}
+        if (facet.hasClass('facet-kind')) {
+            facetName = 'kind';
+        }
+        if (facet.hasClass('facet-priority')) {
+            facetName = 'priority';
+        }
+        if (facet.hasClass('facet-state')) {
+            facetName = 'state';
+        }
+        if (facet.hasClass('facet-repository')) {
+            facetName = 'repository.name';
+        }
 
-		let clickedFacetValue = clicked.text();
-		let index = facets[facetName].indexOf(clickedFacetValue);
-
-		if (index !== -1) {
-			delete facets[facetName][index];
-
-			if (clickedFacetValue === 'open') {
-				delete facets[facetName][facets[facetName].indexOf('new')];
-			}
-
-			clicked.addClass('label-default').removeClass('label-success');
+		if (typeof facets[facetName] !== 'undefined' && facets[facetName].indexOf(facet.text().trim()) !== -1) {
+            facet.addClass('label-default').removeClass('label-success');
 		}
 		else {
-			facets[facetName].push(clickedFacetValue);
-
-			if (clickedFacetValue === 'open') {
-				facets[facetName].push('new');
-			}
-
-			clicked.addClass('label-success').removeClass('label-default');
+            facet.addClass('label-success').removeClass('label-default');
 		}
+
 		doSearch();
 	});
 
-	$('#search').on('keyup', doSearch);
-
 	function doSearch() {
+        populateFacetArray();
 
 		let box = $('#search');
 
@@ -202,6 +220,9 @@ require __DIR__ . '/auth.php';
 		});
 
 	}
+
+    $('#search').on('keyup', doSearch);
+    doSearch();
 
 </script>
 
