@@ -11,6 +11,7 @@ require __DIR__ . '/auth.php';
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/algoliasearch/dist/algoliasearch.min.js"></script>
+	<script src="node_modules/moment/min/moment.min.js"></script>
 </head>
 <body>
 
@@ -86,7 +87,6 @@ require __DIR__ . '/auth.php';
 					<th>Priority</th>
 					<th>Status</th>
 					<th>Created</th>
-					<th>Updated</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -189,6 +189,7 @@ require __DIR__ . '/auth.php';
 						'<td>' + hitData.kind + '</td>' +
 						'<td>' + hitData.priority + '</td>' +
 						'<td>' + hitData.state + '</td>' +
+						'<td>' + moment(hitData.created_on).fromNow() + '</td>' +
 						'</tr>'
 				);
 				$('#issues tbody').append(hit)
