@@ -97,7 +97,7 @@ require __DIR__ . '/auth.php';
 </div>
 
 <script>
-	var client = algoliasearch("GCUCSOG907", "27b8e225cd6cc3eb2bc75d7824911909");
+	var client = algoliasearch("ZZ283W0ONK", "a1d504c7811feee4c48d2eb22ae6e4ac");
 	var index = client.initIndex('BITBUCKET ISSUE');
 
 	var facets = {};
