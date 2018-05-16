@@ -122,10 +122,6 @@ require __DIR__ . '/auth.php';
             }
 
             facets[facetName].push(facetValue);
-
-            if (facetValue === 'open') {
-                facets[facetName].push('new');
-            }
         });
     }
 

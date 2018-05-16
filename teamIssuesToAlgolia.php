@@ -45,6 +45,9 @@ foreach ($teamRepositories->values as $teamRepository) {
     echo $teamRepository->full_name . ': Found ' . count($teamIssues->values) . ' issue(s)' . PHP_EOL;
 
     foreach ($teamIssues->values as $teamIssue) {
+        if ($teamIssue->state === 'new') {
+            $teamIssue->state = 'open';
+        }
 
         $issueSearchData = [
             'title' => $teamIssue->title,
