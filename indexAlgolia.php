@@ -12,6 +12,11 @@ require __DIR__ . '/auth.php';
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/algoliasearch/dist/algoliasearch.min.js"></script>
 	<script src="node_modules/moment/min/moment.min.js"></script>
+    <style type="text/css">
+        [data-facet-name] {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
