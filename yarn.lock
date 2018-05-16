@@ -7,8 +7,8 @@ agentkeepalive@^2.2.0:
   resolved "https://registry.yarnpkg.com/agentkeepalive/-/agentkeepalive-2.2.0.tgz#c5d1bd4b129008f1163f236f86e5faea2026e2ef"
 
 algoliasearch@^3.24.0:
-  version "3.24.0"
-  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-3.24.0.tgz#d0a6ac2963b781d2fb059a3a853fe18765673346"
+  version "3.27.1"
+  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-3.27.1.tgz#e1af42b97dbf44a2dd3a8c907be99c0c34e48414"
   dependencies:
     agentkeepalive "^2.2.0"
     debug "^2.6.8"
@@ -30,15 +30,22 @@ bootstrap@^3.3.6:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
-datatables@^1.10.12:
+datatables-bootstrap@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/datatables-bootstrap/-/datatables-bootstrap-0.0.1.tgz#31f1691623bbed87feb72c83682d1e75ca3fc6f9"
+  dependencies:
+    datatables ">=1.10.0"
+    jquery ">=1.7.0"
+
+datatables@>=1.10.0, datatables@^1.10.12:
   version "1.10.13"
   resolved "https://registry.yarnpkg.com/datatables/-/datatables-1.10.13.tgz#9bb2dec6f7dcf02049a00e4f0e7d3fe009c39346"
   dependencies:
     jquery ">=1.7"
 
 debug@^2.6.8:
-  version "2.6.8"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
     ms "2.0.0"
 
@@ -54,8 +61,8 @@ envify@^4.0.0:
     through "~2.3.4"
 
 es6-promise@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.1.1.tgz#8811e90915d9a0dba36274f0b242dbda78f9c92a"
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.4.tgz#dc4221c2b16518760bd8c39a52d8f356fc00ed29"
 
 esprima@^4.0.0:
   version "4.0.0"
@@ -85,12 +92,12 @@ inherits@^2.0.1:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
 isarray@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.4.tgz#38e7bcbb0f3ba1b7933c86ba1894ddfc3781bbb7"
 
-jquery@>=1.7, jquery@^2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+jquery@>=1.7, jquery@>=1.7.0, jquery@^3.0.0:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
 load-script@^1.0.0:
   version "1.0.0"
@@ -125,12 +132,12 @@ reduce@^1.0.1:
     object-keys "~1.0.0"
 
 safe-buffer@^5.0.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
 
 semver@^5.1.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
 through@~2.3.4:
   version "2.3.8"

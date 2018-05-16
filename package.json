@@ -6,8 +6,9 @@
     "algoliasearch": "^3.24.0",
     "bootstrap": "^3.3.6",
     "datatables": "^1.10.12",
+    "datatables-bootstrap": "^0.0.1",
     "font-awesome": "^4.6.3",
-    "jquery": "^2.2.4"
+    "jquery": "^3.0.0"
   },
   "devDependencies": {},
   "author": "MoeBrowne",
