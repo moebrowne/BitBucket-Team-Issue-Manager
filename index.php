@@ -42,7 +42,7 @@ $fileModTime = ($fileStats !== false) ? Carbon::createFromTimestamp($fileStats['
         <h1>
             <?= ucwords($teamName); ?>
             <?php if ($fileModTime !== null) : ?>
-                <small style="float: right; font-size: 13px;">Updated <?= $fileModTime->diffForHumans(); ?></small>
+                <small style="float: right; font-size: 13px;" title="<?= $fileModTime->format('c'); ?>">Updated <?= $fileModTime->diffForHumans(); ?></small>
             <?php endif; ?>
         </h1>
     </div>
