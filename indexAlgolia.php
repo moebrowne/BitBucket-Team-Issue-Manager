@@ -40,7 +40,7 @@ require __DIR__ . '/auth.php';
     <div id="facets" class="row">
         <div class="col-md-3">
             <div class="row">
-                <div class="col-md-12" style="line-height: 24px;">
+                <div class="facet-group facet-kind col-md-12" style="line-height: 24px;">
                     <h2>Type</h2>
                     <?php foreach ($searchIndex->searchForFacetValues('kind', '*')['facetHits'] as $facet) : ?>
                         <span data-facet-name="kind" data-facet-value="<?= $facet['value'] ?>" class="label label-default"><?= $facet['value'] ?></span>
@@ -48,7 +48,7 @@ require __DIR__ . '/auth.php';
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" style="line-height: 24px;">
+                <div class="facet-group facet-priority col-md-12" style="line-height: 24px;">
                     <hr>
                     <h2>Priority</h2>
                     <?php foreach ($searchIndex->searchForFacetValues('priority', '*')['facetHits'] as $facet) : ?>
@@ -57,7 +57,7 @@ require __DIR__ . '/auth.php';
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" style="line-height: 24px;">
+                <div class="facet-group facet-status col-md-12" style="line-height: 24px;">
                     <hr>
                     <h2>Status</h2>
                     <?php foreach ($searchIndex->searchForFacetValues('state', '*')['facetHits'] as $facet) : ?>
@@ -66,7 +66,7 @@ require __DIR__ . '/auth.php';
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" style="line-height: 24px;">
+                <div class="facet-group facet-repoName col-md-12" style="line-height: 24px;">
                     <hr>
                     <h2>Repo</h2>
                     <?php foreach ($searchIndex->searchForFacetValues('repository.name', '*')['facetHits'] as $facet) : ?>
@@ -196,7 +196,13 @@ require __DIR__ . '/auth.php';
 
     }
 
+    function setFacetDefaults() {
+        $('.facet-kind span, .facet-priority span, .facet-repoName span').removeClass('label-default').addClass('label-success');
+        $('[data-facet-name="state"][data-facet-value="open"]').removeClass('label-default').addClass('label-success');
+    }
+
     $('#search').on('keyup', doSearch);
+    setFacetDefaults();
     doSearch();
 
 </script>
