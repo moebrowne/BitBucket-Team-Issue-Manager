@@ -28,11 +28,11 @@ $fileModTime = ($fileStats !== false) ? Carbon::createFromTimestamp($fileStats['
     <meta charset="UTF-8">
     <title><?= ucwords($teamName); ?> Issue Manager</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/datatables-bootstrap/css/dataTables.bootstrap.min.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script src="node_modules/datatables-bootstrap/js/dataTables.bootstrap.min.js"></script>
 </head>
 <body>
 

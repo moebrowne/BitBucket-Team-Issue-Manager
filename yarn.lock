@@ -6,7 +6,14 @@ bootstrap@^3.3.6:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
-datatables@^1.10.12:
+datatables-bootstrap@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/datatables-bootstrap/-/datatables-bootstrap-0.0.1.tgz#31f1691623bbed87feb72c83682d1e75ca3fc6f9"
+  dependencies:
+    datatables ">=1.10.0"
+    jquery ">=1.7.0"
+
+datatables@>=1.10.0, datatables@^1.10.12:
   version "1.10.13"
   resolved "https://registry.yarnpkg.com/datatables/-/datatables-1.10.13.tgz#9bb2dec6f7dcf02049a00e4f0e7d3fe009c39346"
   dependencies:
@@ -16,6 +23,6 @@ font-awesome@^4.6.3:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
 
-jquery@>=1.7, jquery@^3.0.0:
+jquery@>=1.7, jquery@>=1.7.0, jquery@^3.0.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
