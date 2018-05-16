@@ -16,6 +16,11 @@ require __DIR__ . '/auth.php';
         [data-facet-name] {
             cursor: pointer;
         }
+
+        img.repoAvatar {
+            max-width: 18px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -181,14 +186,14 @@ require __DIR__ . '/auth.php';
                 var hitData = content.hits[h];
 
                 let hit = $(
-                        '<tr>' +
-                        '<td>' + hitData.repository.name + '</td>' +
+                    '<tr>' +
+                        '<td><img class="repoAvatar" src="' + hitData.repository.links.avatar.href + '"> ' + hitData.repository.name + '</td>' +
                         '<td>' + hitData.title + '</td>' +
                         '<td>' + hitData.kind + '</td>' +
                         '<td>' + hitData.priority + '</td>' +
                         '<td>' + hitData.state + '</td>' +
                         '<td>' + moment(hitData.created_on).fromNow() + '</td>' +
-                        '</tr>'
+                    '</tr>'
                 );
                 $('#issues tbody').append(hit)
             }
