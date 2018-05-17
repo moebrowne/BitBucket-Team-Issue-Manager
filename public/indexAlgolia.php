@@ -181,8 +181,26 @@ require __DIR__ . '/../app/auth.php';
             for (var h in content.hits) {
                 var hitData = content.hits[h];
 
+
+                // Set the row class
+                let rowClass = '';
+                switch(hitData.priority) {
+                    case 'critical':
+                        rowClass = 'warning';
+                        break;
+                    case 'blocker':
+                        rowClass = 'danger';
+                        break;
+                }
+
+                switch(hitData.state) {
+                    case 'resolved':
+                        rowClass = 'success';
+                        break;
+                }
+
                 let hit = $(
-                    `<tr>
+                    `<tr class="${rowClass}">
                         <td>
                             <a href="${hitData.repository.links.self.href}"><img class="repoAvatar" src="${hitData.repository.links.avatar.href}"></a>
                             <a href="${hitData.repository.links.self.href}">${hitData.repository.name}</a>
