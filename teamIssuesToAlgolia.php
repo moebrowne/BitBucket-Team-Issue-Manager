@@ -59,6 +59,7 @@ foreach ($teamRepositories->values as $teamRepository) {
             'assignee' => $teamIssue->assignee,
             'reporter' => $teamIssue->reporter,
             'repository' => $teamIssue->repository,
+            'link' => $teamIssue->links->html->href,
             'edited_on' => $teamIssue->edited_on,
             'created_on' => $teamIssue->created_on,
         ];

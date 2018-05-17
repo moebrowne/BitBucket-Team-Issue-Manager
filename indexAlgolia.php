@@ -184,10 +184,12 @@ require __DIR__ . '/auth.php';
                 let hit = $(
                     `<tr>
                         <td>
-                            <img class="repoAvatar" src="${hitData.repository.links.avatar.href}">
-                            ${hitData.repository.name}
+                            <a href="${hitData.repository.links.self.href}"><img class="repoAvatar" src="${hitData.repository.links.avatar.href}"></a>
+                            <a href="${hitData.repository.links.self.href}">${hitData.repository.name}</a>
                         </td>
-                        <td>${hitData.title}</td>
+                        <td>
+                            <a href="${hitData.link}">${hitData.title}</a>
+                        </td>
                         <td>${hitData.kind}</td>
                         <td>${hitData.priority}</td>
                         <td>${hitData.state}</td>
