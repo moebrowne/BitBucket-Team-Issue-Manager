@@ -2,7 +2,7 @@
 
 use Bitbucket\API\Http\Response\Pager;
 
-$loader = require __DIR__ . '/vendor/autoload.php';
+$loader = require __DIR__ . '/../vendor/autoload.php';
 
 require_once  __DIR__ . '/auth.php';
 
@@ -45,28 +45,13 @@ foreach ($teamRepositories->values as $teamRepository) {
     echo $teamRepository->full_name . ': Found ' . count($teamIssues->values) . ' issue(s)' . PHP_EOL;
 
     foreach ($teamIssues->values as $teamIssue) {
-        if ($teamIssue->state === 'new') {
-            $teamIssue->state = 'open';
-        }
-
-        $issueSearchData = [
-            'title' => $teamIssue->title,
-            'content' => $teamIssue->content->raw,
-            'priority' => $teamIssue->priority,
-            'kind' => $teamIssue->kind,
-            'state' => $teamIssue->state,
-            'component' => $teamIssue->component,
-            'assignee' => $teamIssue->assignee,
-            'reporter' => $teamIssue->reporter,
-            'repository' => $teamIssue->repository,
-            'link' => $teamIssue->links->html->href,
-            'edited_on' => $teamIssue->edited_on,
-            'created_on' => $teamIssue->created_on,
-        ];
-
-        $searchIndex->addObject($issueSearchData, $teamIssue->repository->full_name . '-' . $teamIssue->id);
+        array_push($issues, $teamIssue);
     }
 
 }
 
 echo 'Found ' . count($issues) . ' issues total' . PHP_EOL;
+
+$json = json_encode($issues);
+
+file_put_contents(__DIR__ . '/' . $team . '.json', $json);

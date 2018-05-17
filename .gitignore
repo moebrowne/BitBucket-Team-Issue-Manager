@@ -1,6 +1,6 @@
-auth.json
+/app/auth.json
 
-vendor
-node_modules
+/vendor
+/public/node_modules
 
 .idea

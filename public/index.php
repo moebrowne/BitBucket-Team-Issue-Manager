@@ -2,10 +2,10 @@
 
 use Carbon\Carbon;
 
-$loader = require 'vendor/autoload.php';
+$loader = require __DIR__ . '/../vendor/autoload.php';
 
 $teamName = $_GET['teamName'];
-$issueFileName = $teamName . '.json';
+$issueFileName = __DIR__ . '/../app/' . $teamName . '.json';
 
 if (!file_exists($issueFileName)) {
     throw new Exception("Can't load issue JSON! (" . $issueFileName . ")");
