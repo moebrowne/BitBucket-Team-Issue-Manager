@@ -211,7 +211,9 @@ require __DIR__ . '/../app/auth.php';
                         <td>${hitData.kind}</td>
                         <td>${hitData.priority}</td>
                         <td>${hitData.state}</td>
-                        <td>${moment(hitData.created_on).fromNow()}</td>
+                        <td title="${moment(hitData.created_on).format()}">
+                            ${moment(hitData.created_on).fromNow()}
+                        </td>
                     </tr>`
                 );
                 $('#issues tbody').append(hit)
