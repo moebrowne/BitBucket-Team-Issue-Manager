@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../app/auth.php';
+
+$teamName = $_GET['teamName'];
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,7 +31,7 @@ require __DIR__ . '/../app/auth.php';
 <div class="container">
 
     <div class="page-header">
-        <h1>TeamName</h1>
+        <h1><?= ucwords($teamName); ?></h1>
     </div>
 
     <div class="row">
